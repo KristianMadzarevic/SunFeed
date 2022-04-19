@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private auth: AuthService) {}
 
   ngOnInit() {
-    this.auth.login({ email: 'test@test.com', password: '123123' }).subscribe(
+    this.auth.login({ email: 'test123@test.com', password: '123123' }).subscribe(
       (data) => {
         console.log(data);
       },

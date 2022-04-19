@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
       //Hardcoded some login info for demonstration without BE
       if(this._authService.isLoggedIn()) return true;
       //If the user is not logged in
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
       return false;
   }
 
