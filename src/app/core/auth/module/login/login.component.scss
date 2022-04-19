@@ -1,0 +1,27 @@
+@import 'src/scss/variables';
+
+.login {
+  input {
+    color: #ffffff;
+  }
+  .login__title-box {
+    margin-bottom: 35px;
+
+    .login__title {
+      color: $orange;
+      margin-bottom: 0;
+      line-height: 2rem;
+    }
+
+    .login__subtitle {
+      margin: 0;
+      margin-top: 5px;
+      line-height: 1.2rem;
+      color: $orange;
+    }
+  }
+  .login__input {
+    margin-bottom: 20px;
+  }
+
+}
