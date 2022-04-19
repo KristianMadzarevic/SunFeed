@@ -1,0 +1,26 @@
+html {
+  font-size: 16px;
+
+  @media screen and (max-width: 992px) {
+    font-size: 15px;
+  }
+}
+h1,h2,h3,h4, p {
+  margin: 0;
+}
+
+p {
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
