@@ -1,0 +1,8 @@
+<div class="sidebar">
+  <a routerLink="/weather" class="sidebar__home">Gradovi</a>
+  <div *ngFor="let city of getCities(); let i = index">
+    <a [routerLink]="['/weather', city.name]" class="sidebar__home">
+      {{ i + 1 }} . {{ city.name }}
+    </a>
+  </div>
+</div>

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './components/main.component';
+import { CityComponent } from './city/city.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent, pathMatch: 'full' },
+  { path: '', component: CityComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MainRoutingModule {}
+export class CityRoutingModule {}

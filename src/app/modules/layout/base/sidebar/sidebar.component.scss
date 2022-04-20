@@ -1,0 +1,13 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+.sidebar {
+  @include flex_centered(column);
+  height: 100%;
+  background-color: $grey;
+  width: $sidebar-width;
+
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+  }
+}

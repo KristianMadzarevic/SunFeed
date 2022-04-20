@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [],
@@ -14,6 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule,
     MatInputModule,
     MatButtonModule,
+    HttpClientModule,
+    MatIconModule,
   ],
   exports: [
     FormsModule,
@@ -21,6 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule,
     MatInputModule,
     MatButtonModule,
+    HttpClientModule,
+    MatIconModule,
   ],
 })
 export class SharedModule {}

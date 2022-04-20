@@ -13,6 +13,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./../main/main.module').then((m) => m.MainModule),
       },
+      {
+        path: 'weather/:city',
+        loadChildren: () =>
+          import('./../city/city.module').then((m) => m.CityModule),
+      },
     ],
   },
 ];

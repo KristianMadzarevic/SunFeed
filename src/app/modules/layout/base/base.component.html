@@ -1,2 +1,33 @@
-<p>base works!</p>
-<router-outlet></router-outlet>
+<div class="base">
+  <header class="header" id="header">
+    <div class="header__logo">
+      <img src="assets/images/logo.webp" alt="" />
+    </div>
+    <div class="header__burger">
+      <mat-icon
+        color="primary"
+        (click)="sidebarShown = !sidebarShown"
+        *ngIf="!sidebarShown"
+        >menu</mat-icon
+      >
+      <mat-icon
+        color="primary"
+        (click)="sidebarShown = !sidebarShown"
+        *ngIf="sidebarShown"
+        >menu_open</mat-icon
+      >
+    </div>
+  </header>
+  <div class="base__content">
+    <div
+      class="base__sidebar"
+      [ngClass]="{ 'base__sidebar--shown': sidebarShown }"
+    >
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="base__router">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
