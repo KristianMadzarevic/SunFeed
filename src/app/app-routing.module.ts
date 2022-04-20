@@ -4,7 +4,7 @@ import { AuthGuard } from './core/auth/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'weather',
+    path: '',
     loadChildren: () => import('./modules/layout/layout.module').then(m => m.LayoutModule),
     canActivate: [AuthGuard]
   },
