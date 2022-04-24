@@ -37,6 +37,7 @@
       content: "navigate_next";
     }
     .sidebar__home,
+    .sidebar__fav,
     .sidebar__city {
       position: relative;
       text-overflow: ellipsis;
@@ -45,7 +46,29 @@
     }
     .sidebar__home {
       font-size: 1.2rem;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
+    }
+    .sidebar__fav {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .sidebar__cities {
+      max-height: calc(10 * (1rem + 5px));
+      overflow-y: auto;
+      margin-bottom: 10px;
+      .sidebar__city {
+        color: $mustard;
+        font-size: 1rem;
+        line-height: 1;
+        margin: 0 0 5px 15px;
+        padding-right: 15px;
+        a.active {
+          pointer-events: all;
+          &::before{
+            top: -1px;
+          }
+        }
+      }
     }
     @include scrollbar_style(
       ".sidebar__cities",
@@ -54,24 +77,25 @@
       rgba($mustard, 0.9),
       $mustard
     );
-    .sidebar__cities {
-      max-height: calc(10 * (1rem + 5px));
-      overflow-y: auto;
-      .sidebar__city {
-        color: $mustard;
-        font-size: 1rem;
-        line-height: 1;
-        margin: 0 0 5px 15px;
-        padding-right: 15px;
-      }
-    }
   }
   .sidebar__logout {
     position: absolute;
     bottom: 50px;
+    margin-bottom: 10px;
+    @media screen and (max-height: 620px) {
+      position:initial;
+    }
     a {
       user-select: none;
       cursor: pointer;
     }
+  }
+  .sidebar__creds {
+    position: absolute;
+    bottom: 25px;
+    @media screen and (max-height: 620px) {
+      position:initial;
+    }
+    color: $mustard;
   }
 }

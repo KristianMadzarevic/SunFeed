@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DayRoutingModule } from './day-routing.module';
-import { DayComponent } from './day/day.component';
+import { FavoriteRoutingModule } from './favorite-routing.module';
+import { FavoriteComponent } from './favorite/favorite.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    DayComponent
+    FavoriteComponent
   ],
   imports: [
     CommonModule,
-    DayRoutingModule,
+    FavoriteRoutingModule,
     SharedModule
   ]
 })
-export class DayModule { }
+export class FavoriteModule { }

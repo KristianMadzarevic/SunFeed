@@ -41,7 +41,7 @@ export class WeatherService {
    */
   getWeatherForFiveDays(lat: string, lon: string): Observable<any> {
     return this.http.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,hourly,minutely&units=metric&appid=${this.myKey}`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely&units=metric&appid=${this.myKey}`
     );
   }
 }

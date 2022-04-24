@@ -7,7 +7,7 @@ import { WEATHER_ICON_IMG_URL } from '../../constants/open-weather';
   styleUrls: ['./weather-info.component.scss']
 })
 export class WeatherInfoComponent implements OnInit {
-  @Input() dayOfWeek: Date = new Date();
+  @Input() dayOfWeek: Date|undefined;
   @Input() minTemp: number = 0;
   @Input() maxTemp: number = 0;
   @Input() cloudCode: string = '';

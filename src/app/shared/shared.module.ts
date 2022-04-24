@@ -11,11 +11,13 @@ import { CardComponent } from './components/card/card.component';
 import { IfChangesDirective } from './directives/if-changes.directive';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatModalComponent } from './components/mat-modal/mat-modal.component';
+import { DayHRPipe } from './pipes/day-hr.pipe';
+import { MatConfirmModalComponent } from './components/mat-confirm-modal/mat-confirm-modal.component';
 
 
 
 @NgModule({
-  declarations: [WeatherInfoComponent, CardComponent, IfChangesDirective, MatModalComponent],
+  declarations: [WeatherInfoComponent, CardComponent, IfChangesDirective, MatModalComponent, DayHRPipe, MatConfirmModalComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -39,6 +41,7 @@ import { MatModalComponent } from './components/mat-modal/mat-modal.component';
     CardComponent,
     IfChangesDirective,
     MatDialogModule,
+    DayHRPipe
   ],
 })
 export class SharedModule {}

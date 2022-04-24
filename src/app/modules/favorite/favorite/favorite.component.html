@@ -1,0 +1,19 @@
+<div @show class="fav">
+  <h2 class="fav__title">Omiljeni gradovi</h2>
+  <div class="fav__cities">
+    <div class="fav__city" *ngFor="let city of favCitiesFiveDaysData">
+      <h2 class="fav__city-name">{{ getCityName(city.lat, city.lon) }}</h2>
+      <h4 class="fav__subtitle">Vremenska prognoza po danima u tjednu</h4>
+
+      <div class="fav__weather">
+        <app-weather-info
+          *ngFor="let day of city.daily.slice(0, 5); let i = index"
+          [dayOfWeek]="getDayOfWeek(day.dt)"
+          [minTemp]="day.temp.min"
+          [maxTemp]="day.temp.max"
+          [cloudCode]="day.weather[0].icon"
+        ></app-weather-info>
+      </div>
+    </div>
+  </div>
+</div>

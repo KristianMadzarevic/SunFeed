@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatModalComponent } from 'src/app/shared/components/mat-modal/mat-modal.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { DIALOG_DATA } from 'src/app/shared/models/dialog-data';
 
@@ -46,4 +46,5 @@ export class SidebarComponent implements OnInit {
   public hideSidebar() {
     this.hide.emit();
   }
+
 }

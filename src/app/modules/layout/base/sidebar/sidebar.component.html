@@ -9,11 +9,21 @@
         >GLAVNI PRIKAZ</a
       >
     </div>
+    <div class="sidebar__fav">
+      <a
+        routerLink="/weather/favorites"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="hideSidebar()"
+        >OMILJENI GRADOVI</a
+      >
+    </div>
     <div class="sidebar__cities">
-      <div *ngFor="let city of getCities()" class="sidebar__city">
+      <div *ngFor="let city of getCities()" class="sidebar__city" >
         <a
           [routerLink]="['/weather/' + city.name.toLowerCase()]"
           routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: false }"
           (click)="hideSidebar()"
         >
           {{ city.name | uppercase }}
@@ -24,5 +34,5 @@
   <div class="sidebar__logout">
     <a (click)="logoutModalShow()">ODJAVA</a>
   </div>
-  <div class="sidebar__creds"></div>
+  <div class="sidebar__creds">Izradio: Kristian Madžarević</div>
 </div>

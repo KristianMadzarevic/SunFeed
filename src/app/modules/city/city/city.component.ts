@@ -1,5 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  Event,
+  NavigationEnd,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { GlobalService } from 'src/app/services/global.service';
 import { WeatherService } from 'src/app/services/weather/weather.service';
@@ -19,7 +25,7 @@ export class CityComponent implements OnInit, OnDestroy {
   /** City data */
   cityData: any;
   /** subscription for router changes with same id */
-  routerSub: Subscription = new Subscription;
+  routerSub: Subscription = new Subscription();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,24 +34,23 @@ export class CityComponent implements OnInit, OnDestroy {
     private router: Router
   ) {
     //When route changes, refresh city data
-    this.routerSub = this.router.events.subscribe(
-      (event: Event) => {
-        if(event instanceof NavigationEnd){
-          this.ngOnInit();
-        }
+    this.routerSub = this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.customOnInit();
       }
-    )
+    });
   }
   ngOnDestroy(): void {
     this.routerSub.unsubscribe();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+
+  /** Custom on initialize is called only when navigation ends, this is done to avoid redundant API calls */
+  public customOnInit() {
     //Get the name of the city from the route
     this.city = this.activatedRoute.snapshot.paramMap.get('city') || '';
-    //Make the first letter of a city name capital
-
-
     //Load data from global service
     this.cityData = this._global.selectedCities.find(
       (e) => e.name.toLowerCase() === this.city.toLowerCase()
@@ -72,11 +77,17 @@ export class CityComponent implements OnInit, OnDestroy {
    * @param dt unix timestamp
    * @returns Date object with dt date
    */
-   getNameOfDay(dt: number): string {
-    return new Date(dt * 1000).toLocaleDateString('en-EN', {weekday:'short'});
+  getNameOfDay(dt: number): string {
+    return new Date(dt * 1000).toLocaleDateString('en-EN', {
+      weekday: 'short',
+    });
   }
 
-  printDay(day: string) {
-    console.log(day)
+  /**
+   * Select a day for checking it's detailed temperature
+   * @param day
+   */
+  selectDay(day: any, i: number) {
+    this._global.selectDay(day, this.fiveDaysWeather.hourly, i);
   }
 }

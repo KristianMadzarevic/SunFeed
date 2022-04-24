@@ -6,12 +6,13 @@
   </p>
   <div class="city__weather">
     <app-weather-info
-      *ngFor="let day of fiveDaysWeather?.daily.slice(0, 5)"
+      *ngFor="let day of fiveDaysWeather?.daily.slice(0, 5); let i = index"
       [dayOfWeek]="getDayOfWeek(day.dt)"
       [minTemp]="day.temp.min"
       [maxTemp]="day.temp.max"
       [cloudCode]="day.weather[0].icon"
-      [routerLink]="['/weather', cityData.name, getNameOfDay(day.dt)]"
+      [routerLink]="['/weather', cityData.name.toLowerCase(), getNameOfDay(day.dt)]"
+      (click)="selectDay(day, i)"
     ></app-weather-info>
   </div>
 </div>

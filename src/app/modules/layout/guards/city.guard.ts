@@ -10,7 +10,6 @@ export class CityGuard implements CanActivate {
 
   /** This guard can cover both cities and days */
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    console.log(route)
     //If route has no city name
     if (!route.params.city) {
       this.router.navigate(['/weather']);

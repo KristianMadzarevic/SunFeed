@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card__title" [routerLink]="['/weather', city.name]">
+  <div class="card__title" [routerLink]="['/weather', city.name.toLowerCase()]">
     <h4>
       {{ city.name }}, {{ city.sys.country }}
     </h4>
@@ -11,8 +11,8 @@
   ></app-weather-info>
   <div class="card__commands">
     <div class="card__favorite">
-      <mat-icon *ngIf="false">favorite</mat-icon>
-      <mat-icon >favorite_border</mat-icon>
+      <mat-icon *ngIf="isFavorite()" (click)="deleteFavCity()">favorite</mat-icon>
+      <mat-icon *ngIf="!isFavorite()" (click)="addFavCity()">favorite_border</mat-icon>
     </div>
     <div class="card__delete" (click)="deleteCity()">
       <mat-icon>delete_forever</mat-icon>

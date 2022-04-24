@@ -9,11 +9,11 @@
         matInput
         placeholder="Ex. London"
         [(ngModel)]="inputCityName"
-        (keydown.enter)="addCity()"
+        (keydown.enter)="checkLength()"
       />
     </mat-form-field>
     <div class="main__add-submit">
-      <button mat-icon-button color="primary" (click)="addCity()">
+      <button mat-icon-button color="primary" (click)="checkLength()">
         <mat-icon>add_circle</mat-icon>
       </button>
     </div>

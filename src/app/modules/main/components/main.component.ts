@@ -15,6 +15,8 @@ import { DIALOG_DATA } from 'src/app/shared/models/dialog-data';
 export class MainComponent implements OnInit {
   inputCityName: string = '';
   cities: any[] = [];
+  favCities: any[] = [];
+
   constructor(
     private _global: GlobalService,
     private _weather: WeatherService,
@@ -22,11 +24,14 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cities = this.getCities();
+    this.cities = this._global.selectedCities;
+    this.favCities = this._global.favCities;
   }
 
-  public getCities() {
-    return this._global.selectedCities;
+  /** If there is already more than 10 cities, ask for confirmation */
+  public checkLength() {
+    if(!this.inputCityName) return;
+    this.cities.length >= 10 ? this.confirmAddingModalShow() : this.addCity();
   }
 
   public addCity() {
@@ -38,7 +43,7 @@ export class MainComponent implements OnInit {
           const cityAdded = this._global.addCity(data);
           //Clear the input field
           this.inputCityName = '';
-          if (!cityAdded) this.cityAlreadyExists();
+          if (!cityAdded) this.cityAlreadyExistsModal();
           this.cities = this._global.selectedCities;
         },
         (error) => {
@@ -48,8 +53,18 @@ export class MainComponent implements OnInit {
     }
   }
 
-  public cityAlreadyExists() {
-    console.log('Already exists!');
+  public cityAlreadyExistsModal() {
+    //Prepare options
+    const modalOptions = new MatDialogConfig();
+    const dialogData: DIALOG_DATA = {
+      modalTitleText: 'GREŠKA',
+      contentTitleText: 'Ovaj grad je već dodan',
+      contentText:''
+    }
+    modalOptions.data = dialogData;
+
+    this._modal.open(MatModalComponent, modalOptions);
+
   }
 
   public deleteAllCities() {
@@ -71,5 +86,25 @@ export class MainComponent implements OnInit {
       }
     });
 
+  }
+
+  public confirmAddingModalShow() {
+    //Prepare options
+    const modalOptions = new MatDialogConfig();
+    const dialogData: DIALOG_DATA = {
+      modalTitleText: 'DODAVANJE',
+      contentTitleText: 'Želite li dodati još jedan grad?',
+      contentText:'Već imate više od 9 gradova!'
+    }
+    modalOptions.data = dialogData;
+
+    const logoutModalRef = this._modal.open(MatModalComponent, modalOptions);
+    logoutModalRef.afterClosed().subscribe(
+      result => {
+        if(result) {
+          this.addCity();
+        }
+      }
+    )
   }
 }

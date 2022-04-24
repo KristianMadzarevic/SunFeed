@@ -15,6 +15,11 @@ const routes: Routes = [
           import('./../main/main.module').then((m) => m.MainModule),
       },
       {
+        path: 'weather/favorites',
+        loadChildren: () =>
+          import('./../favorite/favorite.module').then((m) => m.FavoriteModule),
+      },
+      {
         path: 'weather/:city',
         loadChildren: () =>
           import('./../city/city.module').then((m) => m.CityModule),
