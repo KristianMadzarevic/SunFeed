@@ -18,7 +18,12 @@
       </button>
     </div>
     <div class="main__add-submit">
-      <button mat-icon-button color="primary" [disabled]="!cities || cities.length === 0" (click)="deleteAllCities()">
+      <button
+        mat-icon-button
+        color="primary"
+        [disabled]="!cities || cities.length === 0"
+        (click)="deleteAllCities()"
+      >
         <mat-icon>delete_sweep</mat-icon>
       </button>
     </div>

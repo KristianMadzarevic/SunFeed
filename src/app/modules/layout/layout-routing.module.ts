@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseComponent } from './base/base.component';
+import { CityGuard } from './guards/city.guard';
 
 const routes: Routes = [
   {
@@ -17,6 +18,13 @@ const routes: Routes = [
         path: 'weather/:city',
         loadChildren: () =>
           import('./../city/city.module').then((m) => m.CityModule),
+          canActivate: [CityGuard]
+      },
+      {
+        path: 'weather/:city/:day',
+        loadChildren: () =>
+          import('./../day/day.module').then((m) => m.DayModule),
+          canActivate: [CityGuard]
       },
     ],
   },

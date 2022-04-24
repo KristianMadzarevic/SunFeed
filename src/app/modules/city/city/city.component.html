@@ -11,6 +11,7 @@
       [minTemp]="day.temp.min"
       [maxTemp]="day.temp.max"
       [cloudCode]="day.weather[0].icon"
+      [routerLink]="['/weather', cityData.name, getNameOfDay(day.dt)]"
     ></app-weather-info>
   </div>
 </div>

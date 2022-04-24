@@ -66,4 +66,17 @@ export class CityComponent implements OnInit, OnDestroy {
   getDayOfWeek(dt: number): Date {
     return new Date(dt * 1000);
   }
+
+  /**
+   * Converts a unix timestamp to Date object
+   * @param dt unix timestamp
+   * @returns Date object with dt date
+   */
+   getNameOfDay(dt: number): string {
+    return new Date(dt * 1000).toLocaleDateString('en-EN', {weekday:'short'});
+  }
+
+  printDay(day: string) {
+    console.log(day)
+  }
 }
