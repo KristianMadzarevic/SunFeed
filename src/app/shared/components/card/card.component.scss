@@ -3,7 +3,7 @@
 
 .card {
   @include border-radius;
-  border: 1px solid rgba($orange, 0.4);
+  border: 1px solid rgba($primary, 0.4);
   display: flex;
   align-items: stretch;
   justify-content: space-between;
@@ -22,7 +22,7 @@
     top: -15px;
     color: $light-grey;
     padding: 3px 15px;
-    border: 1px solid $orange;
+    border: 1px solid $primary;
     max-width: 75%;
     &:hover {
       background: $darkened-white;

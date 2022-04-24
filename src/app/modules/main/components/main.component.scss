@@ -69,11 +69,11 @@
       border-radius: 6px;
     }
     &::-webkit-scrollbar-thumb {
-      background: linear-gradient($light-blue, $blue, $light-blue);
+      background: linear-gradient($light-accent, $accent, $light-accent);
       border-radius: 6px;
     }
     &::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient($blue, $dark-blue, $blue);
+      background: linear-gradient($accent, $dark-blue, $accent);
     }
   }
 }
