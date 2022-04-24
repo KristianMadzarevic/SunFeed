@@ -25,3 +25,27 @@
     }
   }
 }
+
+@mixin scrollbar_style(
+  $selector,
+  $background: $scrollbar-background,
+  $width: $scrollbar-width,
+  $thumbLightColor: $accent,
+  $thumbDarkColor: $dark-accent
+) {
+  /* Scrollbar style */
+  #{$selector}::-webkit-scrollbar {
+    width: $width;
+  }
+  #{$selector}::-webkit-scrollbar-track {
+    background: $background;
+    border-radius: 6px;
+  }
+  #{$selector}::-webkit-scrollbar-thumb {
+    background: $thumbLightColor;
+    border-radius: 6px;
+  }
+  #{$selector}::-webkit-scrollbar-thumb:hover {
+    background: $thumbDarkColor;
+  }
+}

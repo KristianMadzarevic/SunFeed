@@ -18,19 +18,21 @@ export class LoginComponent implements OnInit {
   /** For showing the loading component */
   public loading = false;
 
-  constructor(private fb: FormBuilder, public _router: Router, private _authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    public _router: Router,
+    private _auth: AuthService
+  ) {}
 
   ngOnInit(): void {}
 
   /** Login user on form submit */
   public login(): void {
-    console.log(this.loginForm.controls['email'].errors)
     // Check form
     for (const i in this.loginForm.controls) {
       if (this.loginForm.controls.hasOwnProperty(i)) {
         this.loginForm.controls[i].markAsDirty();
         this.loginForm.controls[i].updateValueAndValidity();
-        console.log(this.loginForm.controls['email'].errors)
       }
     }
     // Return if form is empty
@@ -38,14 +40,13 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this._authService.login(this.loginForm.value).subscribe(
-      data => {
-        console.log(data);
-        this._router.navigate(['/weather'])
+    this._auth.login(this.loginForm.value).subscribe(
+      () => {
+        this._router.navigate(['/weather']);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
-    )
+    );
   }
 }

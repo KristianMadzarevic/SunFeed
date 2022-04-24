@@ -1,5 +1,7 @@
 <div @show-hide class="main">
   <h1 class="main__title">Gradovi</h1>
+
+  <!-- Add city -->
   <div class="main__add">
     <mat-form-field appearance="outline">
       <mat-label>Dodaj grad</mat-label>
@@ -16,15 +18,24 @@
       </button>
     </div>
     <div class="main__add-submit">
-      <button mat-icon-button color="primary" (click)="deleteAllCities()">
+      <button mat-icon-button color="primary" [disabled]="!cities || cities.length === 0" (click)="deleteAllCities()">
         <mat-icon>delete_sweep</mat-icon>
       </button>
     </div>
   </div>
+
+  <!-- Empty main screen -->
   <div class="main__no-cities" *ngIf="cities.length === 0">
-    <h4>Dodajte grad</h4>
+    <app-no-cities></app-no-cities>
   </div>
+
+  <!-- City cards -->
   <div class="main__cards">
-    <app-card @show-hide [city]="city" *ngFor="let city of cities" class="main__card"></app-card>
+    <app-card
+      @show-hide
+      [city]="city"
+      *ngFor="let city of cities"
+      class="main__card"
+    ></app-card>
   </div>
 </div>

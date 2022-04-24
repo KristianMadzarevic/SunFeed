@@ -4,7 +4,7 @@
 .auth {
   @include flex_centered;
   height: 100%;
-  background: linear-gradient(45deg, $dark-grey 0%, $light-grey 100%);
+  background: linear-gradient(45deg, $dark-grey 0%, $grey 100%);
   overflow: auto;
   box-sizing: border-box;
   @media only screen and (max-width: 992px) {

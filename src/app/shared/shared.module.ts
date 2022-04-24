@@ -9,10 +9,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { WeatherInfoComponent } from './components/weather-info/weather-info.component';
 import { CardComponent } from './components/card/card.component';
 import { IfChangesDirective } from './directives/if-changes.directive';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatModalComponent } from './components/mat-modal/mat-modal.component';
+
 
 
 @NgModule({
-  declarations: [WeatherInfoComponent, CardComponent, IfChangesDirective],
+  declarations: [WeatherInfoComponent, CardComponent, IfChangesDirective, MatModalComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,6 +25,7 @@ import { IfChangesDirective } from './directives/if-changes.directive';
     MatButtonModule,
     HttpClientModule,
     MatIconModule,
+    MatDialogModule,
   ],
   exports: [
     FormsModule,
@@ -34,6 +38,7 @@ import { IfChangesDirective } from './directives/if-changes.directive';
     WeatherInfoComponent,
     CardComponent,
     IfChangesDirective,
+    MatDialogModule,
   ],
 })
 export class SharedModule {}

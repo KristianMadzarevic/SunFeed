@@ -1,10 +1,16 @@
 <div *ifChanges="city!" @show class="city">
   <h1 class="city__title">{{ cityData.name }}</h1>
-  <app-weather-info
-    *ngFor="let day of fiveDaysWeather?.daily.slice(0, 5)"
-    [dayOfWeek]="getDayOfWeek(day.dt)"
-    [minTemp]="day.temp.min"
-    [maxTemp]="day.temp.max"
-    [cloudCode]="day.weather[0].icon"
-  ></app-weather-info>
+  <h4 class="city__subtitle">Vremenska prognoza po danima u tjednu</h4>
+  <p class="city__explanation">
+    Odaberi dan za koji želiš vidjeti detaljnu prognozu vremena
+  </p>
+  <div class="city__weather">
+    <app-weather-info
+      *ngFor="let day of fiveDaysWeather?.daily.slice(0, 5)"
+      [dayOfWeek]="getDayOfWeek(day.dt)"
+      [minTemp]="day.temp.min"
+      [maxTemp]="day.temp.max"
+      [cloudCode]="day.weather[0].icon"
+    ></app-weather-info>
+  </div>
 </div>

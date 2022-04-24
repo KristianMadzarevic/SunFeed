@@ -1,18 +1,28 @@
 <div class="sidebar">
   <div class="sidebar__navigation">
     <div class="sidebar__home">
-      <a routerLink="/weather" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="hideSidebar()">GLAVNI PRIKAZ</a>
+      <a
+        routerLink="/weather"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="hideSidebar()"
+        >GLAVNI PRIKAZ</a
+      >
     </div>
-    <div *ngFor="let city of getCities()" class="sidebar__city">
-      <a [routerLink]="['/weather/'+ city.name.toLowerCase()]" routerLinkActive="active" (click)="hideSidebar()">
-        {{ city.name | uppercase }}
-      </a>
+    <div class="sidebar__cities">
+      <div *ngFor="let city of getCities()" class="sidebar__city">
+        <a
+          [routerLink]="['/weather/' + city.name.toLowerCase()]"
+          routerLinkActive="active"
+          (click)="hideSidebar()"
+        >
+          {{ city.name | uppercase }}
+        </a>
+      </div>
     </div>
   </div>
   <div class="sidebar__logout">
     <a (click)="logoutModalShow()">ODJAVA</a>
   </div>
-  <div class="sidebar__creds">
-
-  </div>
+  <div class="sidebar__creds"></div>
 </div>

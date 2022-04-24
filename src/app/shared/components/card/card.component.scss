@@ -10,17 +10,13 @@
   width: 100%;
   padding: 15px 20px;
   position: relative;
-
-  @media screen and (max-width: 576px) {
-    margin: 10px 0;
-  }
   .card__title {
     @include border-radius;
     cursor: pointer;
     background: $white;
     position: absolute;
     top: -15px;
-    color: $light-grey;
+    color: $grey;
     padding: 3px 15px;
     border: 1px solid $primary;
     max-width: 75%;
@@ -51,7 +47,7 @@
         font-size: 2rem;
         cursor: pointer;
         &:hover {
-          color: $grey;
+          color: $dark-primary;
         }
       }
     }

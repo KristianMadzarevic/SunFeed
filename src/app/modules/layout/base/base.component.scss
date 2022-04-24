@@ -13,16 +13,26 @@
     justify-content: space-between;
     padding: 10px 20px;
     align-items: center;
+    @media screen and (max-width: 350px) {
+      padding: 10px;
+    }
     .header__logo {
       img {
         max-height: $header-height;
+        max-width: 80vw;
         padding: 5px;
       }
     }
     .header__burger {
       display: none;
+      cursor: pointer;
       @media screen and (max-width: 768px) {
         display: flex;
+      }
+      .mat-icon {
+        &:hover {
+          color: $dark-primary;
+        }
       }
     }
   }
@@ -51,8 +61,7 @@
   .base__router {
     height: 100%;
     box-sizing: border-box;
-    padding: 30px;
-    padding-bottom: 15px;
+    padding: 10px 30px;
     overflow: auto;
     width: calc(100% - #{$sidebar-width});
     @media screen and (max-width: 768px) {
