@@ -14,11 +14,34 @@ export class WeatherService {
   /**
    * Get weather for only one city
    * @param query City that the API should look for
-   * @returns data
+   * @returns data of the city's weather
    */
   getWeatherByCityName(query: string): Observable<any> {
     return this.http.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${this.myKey}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${this.myKey}`
+    );
+  }
+
+  /**
+   * Get weather for only one city using it's coords
+   * @param lat Latitude of the city
+   * @param lon Longitude of the city
+   * @returns data of the city's weather
+   */
+  getWeatherByCityCoords(lat: string, lon: string): Observable<any> {
+    return this.http.get(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.myKey}`
+    );
+  }
+
+  /**
+   * Get weather for one city for 5 days
+   * @param query City that the API should look for
+   * @returns data
+   */
+  getWeatherForFiveDays(lat: string, lon: string): Observable<any> {
+    return this.http.get(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,hourly,minutely&units=metric&appid=${this.myKey}`
     );
   }
 }

@@ -1,24 +1,8 @@
-<div class="main">
+<div @show-hide class="main">
   <h1 class="main__title">Gradovi</h1>
-  <div class="main__no-cities" *ngIf="getCities().length === 0">
-    <h4>Dodajte grad</h4>
-  </div>
-  <div class="main__city" *ngFor="let city of getCities(); let i = index">
-    <div class="main__city-name">
-      <div class="main__city-number">
-        {{ i + 1 }}
-      </div>
-      {{ city.name }}, {{ city.sys.country }}
-    </div>
-    <div class="main__city-weather">
-      {{ city.main.temp_min }}
-      <br />
-      {{ city.main.temp_max }}
-    </div>
-  </div>
   <div class="main__add">
     <mat-form-field appearance="outline">
-      <mat-label>Grad</mat-label>
+      <mat-label>Dodaj grad</mat-label>
       <input
         matInput
         placeholder="Ex. London"
@@ -31,5 +15,16 @@
         <mat-icon>add_circle</mat-icon>
       </button>
     </div>
+    <div class="main__add-submit">
+      <button mat-icon-button color="primary" (click)="deleteAllCities()">
+        <mat-icon>delete_sweep</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="main__no-cities" *ngIf="cities.length === 0">
+    <h4>Dodajte grad</h4>
+  </div>
+  <div class="main__cards">
+    <app-card @show-hide [city]="city" *ngFor="let city of cities" class="main__card"></app-card>
   </div>
 </div>

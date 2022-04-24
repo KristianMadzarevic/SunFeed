@@ -1,0 +1,9 @@
+
+<div class="info">
+  <p *ngIf="dayOfWeek" class="info__day">{{dayOfWeek | date:'EEE' | uppercase}}</p>
+  <img [src]="iconImgUrl + cloudCode + '@2x.png'" alt="">
+  <div class="info__temp">
+    <p><strong>{{minTemp | number: '1.0-0'}}°</strong></p>
+    <p>{{maxTemp | number: '1.0-0'}}°</p>
+  </div>
+</div>

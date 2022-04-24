@@ -20,7 +20,10 @@
       }
     }
     .header__burger {
-      display: flex;
+      display: none;
+      @media screen and (max-width: 768px) {
+        display: flex;
+      }
     }
   }
 
@@ -34,6 +37,7 @@
   .base__sidebar {
     @include transition;
     overflow: hidden;
+    z-index: 100;
     @media screen and (max-width: 768px) {
       height: calc(100vh - #{$header-height});
       position: absolute;
@@ -48,14 +52,12 @@
     height: 100%;
     box-sizing: border-box;
     padding: 30px;
+    padding-bottom: 15px;
     overflow: auto;
     width: calc(100% - #{$sidebar-width});
-
-    @media only screen and (min-width: 577px) {
-      padding-right: 5px;
-    }
     @media screen and (max-width: 768px) {
       width: 100%;
+      padding: 10px;
     }
   }
 }

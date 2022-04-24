@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card__title" [routerLink]="['/weather', city.name]">
+    <h4>
+      {{ city.name }}, {{ city.sys.country }}
+    </h4>
+  </div>
+  <app-weather-info
+    [minTemp]="city.main.temp_min"
+    [maxTemp]="city.main.temp_max"
+    [cloudCode]="city.weather[0].icon"
+  ></app-weather-info>
+  <div class="card__commands">
+    <div class="card__favorite">
+      <mat-icon *ngIf="false">favorite</mat-icon>
+      <mat-icon >favorite_border</mat-icon>
+    </div>
+    <div class="card__delete" (click)="deleteCity()">
+      <mat-icon>delete_forever</mat-icon>
+    </div>
+  </div>
+</div>
+

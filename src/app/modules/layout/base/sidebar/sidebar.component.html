@@ -1,8 +1,18 @@
 <div class="sidebar">
-  <a routerLink="/weather" class="sidebar__home">Gradovi</a>
-  <div *ngFor="let city of getCities(); let i = index">
-    <a [routerLink]="['/weather', city.name]" class="sidebar__home">
-      {{ i + 1 }} . {{ city.name }}
-    </a>
+  <div class="sidebar__navigation">
+    <div class="sidebar__home">
+      <a routerLink="/weather" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="hideSidebar()">GLAVNI PRIKAZ</a>
+    </div>
+    <div *ngFor="let city of getCities()" class="sidebar__city">
+      <a [routerLink]="['/weather/'+ city.name.toLowerCase()]" routerLinkActive="active" (click)="hideSidebar()">
+        {{ city.name | uppercase }}
+      </a>
+    </div>
+  </div>
+  <div class="sidebar__logout">
+    <a (click)="logoutModalShow()">ODJAVA</a>
+  </div>
+  <div class="sidebar__creds">
+
   </div>
 </div>

@@ -15,3 +15,13 @@
   justify-content: center;
   flex-direction: $value;
 }
+
+@mixin card-width($screenWidth: 0px, $percentage: 100%, $maxWidth: 300px) {
+  @media only screen and (min-width: $screenWidth) {
+    width: calc(#{$percentage} - 20px);
+    max-width: $maxWidth;
+    @media screen and (max-width: 576px) {
+      width: calc(#{$percentage} - 10px);
+    }
+  }
+}

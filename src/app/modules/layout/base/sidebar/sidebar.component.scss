@@ -6,8 +6,54 @@
   height: 100%;
   background-color: $grey;
   width: $sidebar-width;
-
   @media screen and (max-width: 768px) {
     width: 100vw;
+  }
+
+  a {
+    user-select: none;
+    text-decoration: none;
+    color: $mustard;
+    font-weight: bold;
+    padding-left: 10px;
+    &:hover {
+      text-decoration: underline;
+      color: rgba($mustard, 0.6);
+    }
+    &.active {
+      pointer-events: none;
+    }
+  }
+  .sidebar__navigation {
+    max-width: 80%;
+    a.active::before {
+      position: absolute;
+      left: -7px;
+      font-size: 1.3rem;
+      font-family: "Material Icons";
+      content: "navigate_next";
+    }
+    > div {
+      position: relative;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .sidebar__home {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+    .sidebar__city {
+      color: $mustard;
+      font-size: 1rem;
+      margin: 5px 0;
+      margin-left: 15px;
+    }
+  }
+  .sidebar__logout {
+    a {
+      user-select: none;
+      cursor: pointer;
+    }
   }
 }

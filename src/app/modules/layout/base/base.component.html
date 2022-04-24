@@ -23,7 +23,7 @@
       class="base__sidebar"
       [ngClass]="{ 'base__sidebar--shown': sidebarShown }"
     >
-      <app-sidebar></app-sidebar>
+      <app-sidebar (hide)="sidebarShown = false"></app-sidebar>
     </div>
 
     <div class="base__router">

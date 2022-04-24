@@ -1,6 +1,8 @@
 @import 'src/scss/variables';
+@import 'src/scss/mixins';
 
 .login {
+  @include flex_centered(column);
   input {
     color: #ffffff;
   }
@@ -20,8 +22,22 @@
       color: $orange;
     }
   }
-  .login__input {
-    margin-bottom: 20px;
+  form {
+    width: 100%;
+    max-width: 250px;
+    .login__input {
+      margin-bottom: 20px;
+      mat-form-field {
+        width: 100%;
+      }
+    }
+    .login__submit {
+      text-align: center;
+      button {
+        width: 100%;
+        max-width: 150px;
+      }
+    }
   }
 
 }
