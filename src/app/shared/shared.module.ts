@@ -9,15 +9,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { WeatherInfoComponent } from './components/weather-info/weather-info.component';
 import { CardComponent } from './components/card/card.component';
 import { IfChangesDirective } from './directives/if-changes.directive';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatModalComponent } from './components/mat-modal/mat-modal.component';
 import { DayHRPipe } from './pipes/day-hr.pipe';
 import { MatConfirmModalComponent } from './components/mat-confirm-modal/mat-confirm-modal.component';
-
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-  declarations: [WeatherInfoComponent, CardComponent, IfChangesDirective, MatModalComponent, DayHRPipe, MatConfirmModalComponent],
+  declarations: [
+    WeatherInfoComponent,
+    CardComponent,
+    IfChangesDirective,
+    MatModalComponent,
+    DayHRPipe,
+    MatConfirmModalComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,6 +34,7 @@ import { MatConfirmModalComponent } from './components/mat-confirm-modal/mat-con
     HttpClientModule,
     MatIconModule,
     MatDialogModule,
+    MatTooltipModule,
   ],
   exports: [
     FormsModule,
@@ -41,7 +48,8 @@ import { MatConfirmModalComponent } from './components/mat-confirm-modal/mat-con
     CardComponent,
     IfChangesDirective,
     MatDialogModule,
-    DayHRPipe
+    DayHRPipe,
+    MatTooltipModule,
   ],
 })
 export class SharedModule {}

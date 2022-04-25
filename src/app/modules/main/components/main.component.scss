@@ -34,7 +34,8 @@
     @media screen and (max-width: 768px) {
       gap: 10px;
     }
-    .main__add-submit {
+    .main__add-submit,
+    .main__delete {
       .mat-icon-button {
         width: $medium;
         height: $medium;
@@ -48,6 +49,9 @@
             cursor: pointer;
             color: $dark-primary;
           }
+        }
+        &.disabled {
+          pointer-events: none;
         }
       }
     }

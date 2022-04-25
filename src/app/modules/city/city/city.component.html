@@ -13,6 +13,9 @@
       [cloudCode]="day.weather[0].icon"
       [routerLink]="['/weather', cityData.name.toLowerCase(), getNameOfDay(day.dt)]"
       (click)="selectDay(day, i)"
+      matTooltip="Prikaži detaljnu prognozu"
+      matTooltipPosition="above"
+      matTooltipClass="sunfeed__tooltip"
     ></app-weather-info>
   </div>
 </div>

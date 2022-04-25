@@ -19,3 +19,12 @@ body {
   box-sizing: border-box;
 }
 
+.sunfeed__tooltip {
+  font-size: 0.8rem!important;
+  @include border-radius;
+  background-color: $white!important;
+  color: $primary!important;
+  border: 1px solid $primary;
+  top: -50px;
+}
+

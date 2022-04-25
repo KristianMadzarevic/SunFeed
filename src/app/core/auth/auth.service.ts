@@ -53,5 +53,8 @@ export class AuthService {
   public logOut() {
     localStorage.removeItem('X-token');
     localStorage.removeItem('CITIES');
+    localStorage.removeItem('SELECTED_DAY');
+    localStorage.removeItem('SELECTED_DAY_HOURLY_DATA');
+    localStorage.removeItem('SELECTED_DAY_INDEX');
   }
 }

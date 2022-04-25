@@ -6,6 +6,9 @@
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
         (click)="hideSidebar()"
+        matTooltip="Prikaži početni prikaz"
+        matTooltipPosition="above"
+        matTooltipClass="sunfeed__tooltip"
         >GLAVNI PRIKAZ</a
       >
     </div>
@@ -15,16 +18,22 @@
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
         (click)="hideSidebar()"
+        matTooltip="Prikaži omiljene gradove"
+        matTooltipPosition="above"
+        matTooltipClass="sunfeed__tooltip"
         >OMILJENI GRADOVI</a
       >
     </div>
     <div class="sidebar__cities">
-      <div *ngFor="let city of getCities()" class="sidebar__city" >
+      <div *ngFor="let city of getCities()" class="sidebar__city">
         <a
           [routerLink]="['/weather/' + city.name.toLowerCase()]"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: false }"
           (click)="hideSidebar()"
+          matTooltip="Prikaži grad"
+          matTooltipPosition="above"
+          matTooltipClass="sunfeed__tooltip"
         >
           {{ city.name | uppercase }}
         </a>
@@ -32,7 +41,13 @@
     </div>
   </div>
   <div class="sidebar__logout">
-    <a (click)="logoutModalShow()">ODJAVA</a>
+    <a
+      (click)="logoutModalShow()"
+      matTooltip="Odjavi se"
+      matTooltipPosition="above"
+      matTooltipClass="sunfeed__tooltip"
+      >ODJAVA</a
+    >
   </div>
   <div class="sidebar__creds">Izradio: Kristian Madžarević</div>
 </div>

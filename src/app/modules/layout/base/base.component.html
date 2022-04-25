@@ -8,12 +8,18 @@
         color="primary"
         (click)="sidebarShown = !sidebarShown"
         *ngIf="!sidebarShown"
+        matTooltip="Prikaži navigaciju"
+        matTooltipPosition="below"
+        matTooltipClass="sunfeed__tooltip"
         >menu</mat-icon
       >
       <mat-icon
         color="primary"
         (click)="sidebarShown = !sidebarShown"
         *ngIf="sidebarShown"
+        matTooltip="Sakrij navigaciju"
+        matTooltipPosition="below"
+        matTooltipClass="sunfeed__tooltip"
         >menu_open</mat-icon
       >
     </div>
