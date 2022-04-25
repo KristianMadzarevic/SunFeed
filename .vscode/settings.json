@@ -1,0 +1,8 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/5f83aaa1-8c1b-483d-9d77-8aa258ecf8fe/resourceGroups/SunFeedApp_group/providers/Microsoft.Web/sites/SunFeedApp",
+    "appService.deploySubpath": "",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ]
+}
