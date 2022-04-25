@@ -1,0 +1,61 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+.day {
+  color: $primary;
+  height: calc(100vh - #{$header-height} - 20px);
+  text-align: center;
+  .day__title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+    @media screen and (max-height: 700px) {
+      margin-bottom: 20px;
+    }
+  }
+  .day__subtitle {
+    margin-bottom: 20px;
+  }
+  .day__table {
+    @include border-radius;
+    border: 1px solid $primary;
+    width: min(100%, 900px);
+    background: $white;
+    margin: auto;
+    table-layout: fixed;
+    border-spacing: 0;
+    overflow: hidden;
+    th,td {
+      border: none;
+    }
+    .day__table-head {
+      color: $accent;
+      th{
+        padding: 5px;
+      }
+    }
+    .day__table-body{
+      background: $white;
+      .day__table-row{
+        td {
+          padding: 5px 0;
+        }
+      }
+    }
+  }
+
+  .day__missing {
+    color: $accent;
+    h3 {
+      width: 80%;
+      margin: auto;
+      margin-bottom: 30px;
+      @media screen and (max-width: 576px) {
+        width: 90%;
+      }
+    }
+    svg {
+      fill: $darkened-white;
+    }
+  }
+}

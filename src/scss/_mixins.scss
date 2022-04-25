@@ -1,0 +1,51 @@
+@mixin border-radius($value: 10px) {
+  border-radius: $value;
+}
+@mixin transition($property: all, $duration: 0.3s, $animation: ease) {
+  -webkit-transition: $property $duration $animation;
+  -moz-transition: $property $duration $animation;
+  -ms-transition: $property $duration $animation;
+  -o-transition: $property $duration $animation;
+  transition: $property $duration $animation;
+}
+
+@mixin flex_centered($value: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $value;
+}
+
+@mixin card-width($screenWidth: 0px, $percentage: 100%, $maxWidth: 300px) {
+  @media only screen and (min-width: $screenWidth) {
+    width: calc(#{$percentage} - 20px);
+    max-width: $maxWidth;
+    @media screen and (max-width: 576px) {
+      width: calc(#{$percentage} - 10px);
+    }
+  }
+}
+
+@mixin scrollbar_style(
+  $selector,
+  $background: $scrollbar-background,
+  $width: $scrollbar-width,
+  $thumbLightColor: $accent,
+  $thumbDarkColor: $dark-accent
+) {
+  /* Scrollbar style */
+  #{$selector}::-webkit-scrollbar {
+    width: $width;
+  }
+  #{$selector}::-webkit-scrollbar-track {
+    background: $background;
+    border-radius: 6px;
+  }
+  #{$selector}::-webkit-scrollbar-thumb {
+    background: $thumbLightColor;
+    border-radius: 6px;
+  }
+  #{$selector}::-webkit-scrollbar-thumb:hover {
+    background: $thumbDarkColor;
+  }
+}

@@ -1,0 +1,18 @@
+@import "~@angular/material/theming";
+@import "src/scss/variables";
+@import "src/scss/mat-colors/orange";
+@import "src/scss/mat-colors/blue";
+@import "src/scss/mat-colors/red";
+
+@include mat-core();
+
+$my-app-primary: mat-palette($my-orange, 700, 900, 500);
+$my-app-accent: mat-palette($my-blue, 700, 900, 500);
+$my-app-warn: mat-palette($my-red, 700, 900, 500);
+
+$my-light-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+$my-dark-theme: mat-dark-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-light-theme);
+.dark-theme {
+  @include angular-material-theme($my-dark-theme);
+}

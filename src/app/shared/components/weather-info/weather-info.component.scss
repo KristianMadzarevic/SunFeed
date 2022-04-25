@@ -1,0 +1,19 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+.info {
+  @include flex_centered(column);
+  .info__day {
+    color: $accent;
+  }
+  .info__temp {
+    display: flex;
+    gap: 5px;
+  }
+  img {
+    user-select: none;
+    width: 60px;
+    height: 60px;
+    margin: -13px 0;
+  }
+}

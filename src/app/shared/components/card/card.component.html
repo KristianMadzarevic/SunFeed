@@ -1,0 +1,45 @@
+<div class="card">
+  <div
+    class="card__title"
+    [routerLink]="['/weather', city.name.toLowerCase()]"
+    matTooltip="Prikaži 5 dana"
+    matTooltipPosition="above"
+    matTooltipClass="sunfeed__tooltip"
+  >
+    <h4>{{ city.name }}, {{ city.sys.country }}</h4>
+  </div>
+  <app-weather-info
+    [minTemp]="city.main.temp_min"
+    [maxTemp]="city.main.temp_max"
+    [cloudCode]="city.weather[0].icon"
+  ></app-weather-info>
+  <div class="card__commands">
+    <div class="card__favorite">
+      <mat-icon
+        *ngIf="isFavorite()"
+        (click)="deleteFavCity()"
+        matTooltip="Ukloni omiljeni grad"
+        matTooltipPosition="above"
+        matTooltipClass="sunfeed__tooltip"
+        >favorite</mat-icon
+      >
+      <mat-icon
+        *ngIf="!isFavorite()"
+        (click)="addFavCity()"
+        matTooltip="Označi omiljeni grad"
+        matTooltipPosition="above"
+        matTooltipClass="sunfeed__tooltip"
+        >favorite_border</mat-icon
+      >
+    </div>
+    <div
+      class="card__delete"
+      (click)="deleteCity()"
+      matTooltip="Obriši grad"
+      matTooltipPosition="above"
+      matTooltipClass="sunfeed__tooltip"
+    >
+      <mat-icon>delete_forever</mat-icon>
+    </div>
+  </div>
+</div>

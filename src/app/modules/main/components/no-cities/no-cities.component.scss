@@ -1,0 +1,21 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+.no-cities {
+  @include flex_centered(column);
+  padding-top: 20px;
+  height: 100%;
+  color: $accent;
+  gap: 20px;
+  @media screen and (max-height: 700px) {
+    padding-top: 0px;
+  }
+  p {
+    text-align: center;
+  }
+  svg {
+    fill: $darkened-white;
+    width: clamp(100px, 20vw, 150px);
+    height: clamp(100px, 20vh, 150px);
+  }
+}

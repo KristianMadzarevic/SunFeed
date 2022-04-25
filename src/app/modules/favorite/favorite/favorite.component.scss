@@ -1,0 +1,58 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+.fav {
+  color: $primary;
+  height: calc(100vh - #{$header-height} - 20px);
+  text-align: center;
+  @include scrollbar_style(".fav__cities");
+  .fav__title {
+    margin-bottom: 20px;
+  }
+  .fav__cities{
+    max-height: calc(100vh - #{$header-height} - 90px);
+    overflow-y: auto;
+
+    .fav__city {
+      margin-bottom: 20px;
+      .fav__city-name {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 5px;
+        @media screen and (max-height: 700px) {
+          margin-bottom: 20px;
+        }
+      }
+      .fav__subtitle {
+        text-align: left;
+        margin-bottom: 20px;
+      }
+      .fav__weather {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        /* Horizontal lines */
+        > *:not(:last-child) {
+          border-right: 1px solid $primary;
+        }
+
+        /* Vertical lines */
+        @media screen and (max-width: 350px) {
+          flex-direction: column;
+          > *:not(:last-child) {
+            border-right: none;
+            border-bottom: 1px solid $primary;
+          }
+        }
+
+        app-weather-info {
+          padding: 10px 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

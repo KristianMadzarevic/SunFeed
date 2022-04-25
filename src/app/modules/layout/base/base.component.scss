@@ -1,0 +1,72 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+.base {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  .header {
+    height: $header-height;
+    background: $dark-grey;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+    @media screen and (max-width: 350px) {
+      padding: 10px;
+    }
+    .header__logo {
+      img {
+        max-height: $header-height;
+        max-width: 80vw;
+        padding: 5px;
+      }
+    }
+    .header__burger {
+      display: none;
+      cursor: pointer;
+      @media screen and (max-width: 768px) {
+        display: flex;
+      }
+      .mat-icon {
+        &:hover {
+          color: $dark-primary;
+        }
+      }
+    }
+  }
+
+  .base__content {
+    height: calc(100% - #{$header-height});
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+  }
+
+  .base__sidebar {
+    @include transition;
+    overflow: hidden;
+    z-index: 100;
+    @media screen and (max-width: 768px) {
+      height: calc(100vh - #{$header-height});
+      position: absolute;
+      width: 0%;
+      &--shown {
+        width: 100%;
+      }
+    }
+  }
+
+  .base__router {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px 30px;
+    overflow: auto;
+    width: calc(100% - #{$sidebar-width});
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+<div @show-hide class="main">
+  <h1 class="main__title">Gradovi</h1>
+
+  <!-- Add city -->
+  <div class="main__add">
+    <mat-form-field appearance="outline">
+      <mat-label>Dodaj grad</mat-label>
+      <input
+        matInput
+        placeholder="Ex. London"
+        [(ngModel)]="inputCityName"
+        (keydown.enter)="checkLength()"
+      />
+    </mat-form-field>
+    <div class="main__add-submit">
+      <button mat-icon-button color="primary" (click)="checkLength()"
+      matTooltip="Dodaj grad"
+        matTooltipPosition="above"
+        matTooltipClass="sunfeed__tooltip"
+        >
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+    <div class="main__delete">
+      <button
+        mat-icon-button
+        color="primary"
+        [disabled]="!cities || cities.length === 0"
+        [class.disabled]="!cities || cities.length === 0"
+        (click)="deleteAllCities()"
+        matTooltip="Obriši sve gradove"
+        matTooltipPosition="above"
+        matTooltipClass="sunfeed__tooltip"
+      >
+        <mat-icon>delete_sweep</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Empty main screen -->
+  <div class="main__no-cities" *ngIf="cities.length === 0">
+    <app-no-cities></app-no-cities>
+  </div>
+
+  <!-- City cards -->
+  <div class="main__cards">
+    <app-card
+      @show-hide
+      [city]="city"
+      *ngFor="let city of cities"
+      class="main__card"
+    ></app-card>
+  </div>
+</div>

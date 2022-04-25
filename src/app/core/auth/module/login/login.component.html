@@ -1,0 +1,35 @@
+<div class="login">
+  <div class="login__title-box">
+    <h1 class="login__title">Prijavite se</h1>
+    <p class="login__subtitle">
+      kako bi vidjeli vremensku prognozu
+    </p>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" autocomplete="off">
+    <div class="login__input">
+      <mat-form-field  appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Ex. test@test.com" formControlName="email">
+        <mat-error *ngIf="loginForm.controls['email'].hasError('email')  && !loginForm.controls['email'].hasError('required')">
+          Molimo unesite pravilan e-mail.
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+          Unesite e-mail!
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="login__input">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Ex. 123123" type="password" formControlName="password">
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+          Unesite lozinku!
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="login__submit">
+      <button mat-flat-button color="primary">PRIJAVI SE</button>
+    </div>
+  </form>
+</div>

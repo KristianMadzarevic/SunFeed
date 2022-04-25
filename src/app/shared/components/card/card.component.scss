@@ -1,0 +1,55 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+.card {
+  @include border-radius;
+  border: 1px solid rgba($primary, 0.4);
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 20px;
+  position: relative;
+  .card__title {
+    @include border-radius;
+    cursor: pointer;
+    background: $white;
+    position: absolute;
+    top: -15px;
+    color: $grey;
+    padding: 3px 15px;
+    border: 1px solid $primary;
+    max-width: 75%;
+    &:hover {
+      background: $darkened-white;
+    }
+    h4 {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+  .card__commands {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    height: auto;
+    right: 10px;
+    height: 100%;
+    top: 0;
+    width: 30px;
+    > * {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      mat-icon {
+        @include transition;
+        font-size: 2rem;
+        cursor: pointer;
+        &:hover {
+          color: $dark-primary;
+        }
+      }
+    }
+  }
+}
