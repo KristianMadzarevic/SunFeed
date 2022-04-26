@@ -16,4 +16,8 @@
       </div>
     </div>
   </div>
+  <!-- Empty main screen -->
+  <div class="main__no-cities" *ngIf="favCitiesFiveDaysData.length === 0">
+    <app-no-cities></app-no-cities>
+  </div>
 </div>

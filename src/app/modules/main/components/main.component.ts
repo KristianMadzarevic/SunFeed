@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { GlobalService } from 'src/app/services/global.service';
 import { WeatherService } from 'src/app/services/weather/weather.service';
 import { SHOW_HIDE_ANIMATION } from 'src/app/shared/animations/show-hide';
@@ -20,7 +21,8 @@ export class MainComponent implements OnInit {
   constructor(
     private _global: GlobalService,
     private _weather: WeatherService,
-    private _modal: MatDialog
+    private _modal: MatDialog,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class MainComponent implements OnInit {
 
   /** If there is already more than 10 cities, ask for confirmation */
   public checkLength() {
-    if(!this.inputCityName) return;
+    if (!this.inputCityName) return;
     this.cities.length >= 10 ? this.confirmAddingModalShow() : this.addCity();
   }
 
@@ -47,7 +49,9 @@ export class MainComponent implements OnInit {
           this.cities = this._global.selectedCities;
         },
         (error) => {
-          console.log(error);
+          this._snackBar.open('Nepostojeći grad', '', {
+            duration: 2000,
+          });
         }
       );
     }
@@ -59,16 +63,15 @@ export class MainComponent implements OnInit {
     const dialogData: DIALOG_DATA = {
       modalTitleText: 'GREŠKA',
       contentTitleText: 'Ovaj grad je već dodan',
-      contentText:''
-    }
+      contentText: '',
+    };
     modalOptions.data = dialogData;
 
     this._modal.open(MatModalComponent, modalOptions);
-
   }
 
   public deleteAllCities() {
-    if(!this.cities || this.cities.length === 0) return;
+    if (!this.cities || this.cities.length === 0) return;
     //Prepare options
     const modalOptions = new MatDialogConfig();
     const dialogData: DIALOG_DATA = {
@@ -85,7 +88,6 @@ export class MainComponent implements OnInit {
         this.cities = this._global.selectedCities;
       }
     });
-
   }
 
   public confirmAddingModalShow() {
@@ -94,17 +96,15 @@ export class MainComponent implements OnInit {
     const dialogData: DIALOG_DATA = {
       modalTitleText: 'DODAVANJE',
       contentTitleText: 'Želite li dodati još jedan grad?',
-      contentText:'Već imate više od 9 gradova!'
-    }
+      contentText: 'Već imate više od 9 gradova!',
+    };
     modalOptions.data = dialogData;
 
     const logoutModalRef = this._modal.open(MatModalComponent, modalOptions);
-    logoutModalRef.afterClosed().subscribe(
-      result => {
-        if(result) {
-          this.addCity();
-        }
+    logoutModalRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.addCity();
       }
-    )
+    });
   }
 }

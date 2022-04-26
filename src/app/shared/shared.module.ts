@@ -14,6 +14,8 @@ import { MatModalComponent } from './components/mat-modal/mat-modal.component';
 import { DayHRPipe } from './pipes/day-hr.pipe';
 import { MatConfirmModalComponent } from './components/mat-confirm-modal/mat-confirm-modal.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NoCitiesComponent } from './components/no-cities/no-cities.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatModalComponent,
     DayHRPipe,
     MatConfirmModalComponent,
+    NoCitiesComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +38,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatDialogModule,
     MatTooltipModule,
+    MatSnackBarModule,
   ],
   exports: [
     FormsModule,
@@ -50,6 +54,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDialogModule,
     DayHRPipe,
     MatTooltipModule,
+    NoCitiesComponent,
+    MatSnackBarModule,
   ],
 })
 export class SharedModule {}

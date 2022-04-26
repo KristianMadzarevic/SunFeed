@@ -10,6 +10,7 @@ export class GlobalService {
   selectedDay: any;
   dayIndex: number = 0;
   favCities: any[] = [];
+  favUser: string = '';
 
 
   constructor(private _weather: WeatherService) {
@@ -31,11 +32,7 @@ export class GlobalService {
     if(dayIndex) {
       this.dayIndex = parseInt(dayIndex);
     }
-    let favCities = localStorage.getItem('FAVORITE_CITIES');
-    if(favCities) {
-      this.favCities = JSON.parse(favCities);
-      this.refreshFavs();
-    }
+    this.getFavCities();
   }
 
   /**
@@ -96,7 +93,7 @@ export class GlobalService {
   public addFavCity(city: any): boolean{
     if(this.favCities.find(e=> e.name === city.name)) return false;
     this.favCities = [...this.favCities, city];
-    this.saveCities();
+    this.saveFavCities();
     return true;
   }
 
@@ -107,7 +104,7 @@ export class GlobalService {
   public deleteFavCity(city:any) {
     const cityIndex = this.favCities.indexOf(this.favCities.find(e=> e.name === city.name));
     this.favCities.splice(cityIndex,1);
-    this.saveCities();
+    this.saveFavCities();
   }
 
   /**
@@ -122,7 +119,10 @@ export class GlobalService {
   /** Save cities to local storage */
   public saveCities() {
     localStorage.setItem('CITIES', JSON.stringify(this.selectedCities));
-    localStorage.setItem('FAVORITE_CITIES', JSON.stringify(this.favCities));
+  }
+  /** Save fav cities to local storage */
+  public saveFavCities() {
+    localStorage.setItem('FAVORITE_CITIES' + this.favUser, JSON.stringify(this.favCities));
   }
 
   public selectDay(day: any, cityData: any, dayIndex:number) {
@@ -132,5 +132,18 @@ export class GlobalService {
     localStorage.setItem('SELECTED_DAY',JSON.stringify(day));
     localStorage.setItem('SELECTED_DAY_HOURLY_DATA',JSON.stringify(cityData));
     localStorage.setItem('SELECTED_DAY_INDEX',JSON.stringify(dayIndex));
+  }
+
+  /** Favorite cities will load in normal cities when user logs in */
+  public getFavCities(){
+    let favUser = localStorage.getItem('X-token');
+    if(favUser) {
+      this.favUser = favUser.slice(0, favUser.indexOf(' '));
+    }
+    let favCities = localStorage.getItem('FAVORITE_CITIES' + this.favUser);
+    if(favCities) {
+      this.favCities = JSON.parse(favCities);
+      this.refreshFavs();
+    }
   }
 }

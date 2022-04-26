@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -21,7 +23,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public _router: Router,
-    private _auth: AuthService
+    private _auth: AuthService,
+    private _snackBar: MatSnackBar,
+    private _global: GlobalService
   ) {}
 
   ngOnInit(): void {}
@@ -42,10 +46,14 @@ export class LoginComponent implements OnInit {
 
     this._auth.login(this.loginForm.value).subscribe(
       () => {
+        this._global.getFavCities();
+          this._global.selectedCities = this._global.favCities;
         this._router.navigate(['/weather']);
       },
-      (error) => {
-        console.log(error);
+      () => {
+        this._snackBar.open('Pogrešni podaci', '', {
+          duration: 2000,
+        });
       }
     );
   }

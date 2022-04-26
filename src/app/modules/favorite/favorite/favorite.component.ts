@@ -23,8 +23,6 @@ export class FavoriteComponent implements OnInit {
       this._weather.getWeatherForFiveDays(city.coord.lat, city.coord.lon).subscribe(
         data => {
           this.favCitiesFiveDaysData.push(data);
-          console.log(this.favCitiesFiveDaysData)
-          console.log(this.favCities)
         }
       )
     }

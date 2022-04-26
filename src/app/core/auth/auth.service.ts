@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { GlobalService } from 'src/app/services/global.service';
 import { CORRECT_CREDENTIALS } from 'src/app/shared/constants/correct-credentials';
 import { Credentials } from 'src/app/shared/models/credentials';
 
@@ -8,7 +9,7 @@ import { Credentials } from 'src/app/shared/models/credentials';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private datePipe: DatePipe) {}
+  constructor(private datePipe: DatePipe, private _global: GlobalService) {}
 
   /** Correct credentials are all contained in a shared folder to be easier to adjust */
   public correctCredentials = CORRECT_CREDENTIALS;
@@ -56,5 +57,8 @@ export class AuthService {
     localStorage.removeItem('SELECTED_DAY');
     localStorage.removeItem('SELECTED_DAY_HOURLY_DATA');
     localStorage.removeItem('SELECTED_DAY_INDEX');
+    this._global.selectedCities = [];
+    this._global.favCities = [];
+    this._global.favUser = '';
   }
 }
